@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Foydalanuvchilar</title>
+</head>
+<body>
+    <h1>Foydalanuvchilar Ro'yxati</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Telegram ID</th>
+            <th>Ism</th>
+            <th>Username</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.user_id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.username }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Sahifalash -->
+    <div>
+        {% if page > 1 %}
+            <a href="/users?page={{ page - 1 }}">Oldingi</a>
+        {% endif %}
+        Sahifa {{ page }} / {{ total_pages }}
+        {% if page < total_pages %}
+            <a href="/users?page={{ page + 1 }}">Keyingi</a>
+        {% endif %}
+    </div>
+</body>
+</html>

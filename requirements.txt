@@ -1,0 +1,7 @@
+telethon
+fastapi
+uvicorn
+jinja2
+aiofiles
+requests
+sqlalchemy

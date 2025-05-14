@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Xabarlar</title>
+</head>
+<body>
+    <h1>Foydalanuvchilar Xabarlari</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Telegram ID</th>
+            <th>Ism</th>
+            <th>Username</th>
+            <th>Xabar</th>
+            <th>AI Javob</th>
+            <th>Fayl</th>
+            <th>Vaqt</th>
+        </tr>
+        {% for msg in messages %}
+        <tr>
+            <td>{{ msg.id }}</td>
+            <td>{{ msg.user_id }}</td>
+            <td>{{ msg.name }}</td>
+            <td>{{ msg.username }}</td>
+            <td>{{ msg.user_message }}</td>
+            <td>{{ msg.ai_reply }}</td>
+            <td>{{ msg.file_name or "" }}</td>
+            <td>{{ msg.timestamp }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Sahifalash -->
+    <div>
+        {% if page > 1 %}
+            <a href="/messages?page={{ page - 1 }}">Oldingi</a>
+        {% endif %}
+        Sahifa {{ page }} / {{ total_pages }}
+        {% if page < total_pages %}
+            <a href="/messages?page={{ page + 1 }}">Keyingi</a>
+        {% endif %}
+    </div>
+</body>
+</html>
